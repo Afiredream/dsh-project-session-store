@@ -1,0 +1,9 @@
+# Dependencies installed for local development (the harness supplies its own).
+node_modules/
+
+# Scratch space for package archaeology and end-to-end harness runs.
+.tmp-ref/
+.e2e/
+
+# Packed tarballs.
+*.tgz
