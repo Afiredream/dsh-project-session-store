@@ -1,26 +1,3 @@
-# dsh-project-session-store — composition layer for DSH 2.x.
-#
-# The base bundle registers the stock central-root backend as the row
-# `session-persistence-jsonl` (root: `$DSH_HOME/sessions`). This layer disables
-# that row and inserts this plugin in its place. Both rows provide the same
-# service key (`ctx.sessionPersistence`), so exactly one of them may be active.
-#
-# This plugin subclasses the official JSONL backend and changes only where
-# artifacts live, how they are discovered, and how legacy sessions migrate:
-#
-#   before:  $DSH_HOME/sessions/<project-key>/<session-id>/session.v4.jsonl.zstd
-#   after:   <project>/.dsh/sessions/<session-id>/session.v4.jsonl.zstd
-#
-# Roll back from your own profile `cordis.patch.yml` (the user layer is applied
-# after every bundle layer, so it wins):
-#
-#   - id: session-persistence-project-local
-#     disabled: true
-#   - id: session-persistence-jsonl
-#     disabled: false
-#
-# Plugin options live under this row's `config`; see README.zh.md. Every option
-# has a working default, so no config block is required.
 
 - id: session-persistence-jsonl
   disabled: true
